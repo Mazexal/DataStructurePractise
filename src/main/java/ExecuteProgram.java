@@ -23,5 +23,17 @@ public class ExecuteProgram {
         return prev;
     }
 
+    public  DListNode reverse(DListNode head)
+    {
+        DListNode curr=null;
+        while (head!=null){
+            curr=head;
+            head=curr.next;
+            curr.next=curr.prev;
+            curr.prev=head;
+        }
+        return curr;
+    }
+
 
 }
