@@ -4,12 +4,12 @@ package CP1;
  * Created by 10235 on 2017/7/16.
  */
 public class TreeNode {
-    public int val;
-    public TreeNode left,right;
-    public TreeNode(int val)
+    public String data;
+    public TreeNode leftChild,rightChild;
+    public TreeNode(String data)
     {
-        this.val=val;
-        this.left=null;
-        this.right=null;
+        this.data=data;
+        this.leftChild=null;
+        this.rightChild=null;
     }
 }
