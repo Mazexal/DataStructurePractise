@@ -10,7 +10,9 @@ public class SortExecute {
     {
         int unsortedArray[]=new int[]{6,5,3,1,8,7,2,4};
 
-        bubbleSortExecute(unsortedArray);
+        //bubbleSortExecute(unsortedArray);
+
+        selectionSortExecute(unsortedArray);
     }
 
 
@@ -18,6 +20,16 @@ public class SortExecute {
     public  static void bubbleSortExecute(int unsortedArray[])
     {
         SortUtil.bubbleSort(unsortedArray);
+        System.out.println("After sort: ");
+        for(int item:unsortedArray){
+            System.out.print(item+" ");
+        }
+    }
+
+    //不安全
+    public  static void selectionSortExecute(int unsortedArray[])
+    {
+        SortUtil.selectionSort(unsortedArray);
         System.out.println("After sort: ");
         for(int item:unsortedArray){
             System.out.print(item+" ");
