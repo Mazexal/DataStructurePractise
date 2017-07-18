@@ -31,7 +31,7 @@ public class QueueExecute {
         Boolean b = hash.contains("bill");
 
 
-        Map<String,Integer> map=new HashMap<>();
+        Map<String,Integer> map=new HashMap<String,Integer>();
 //        map.put("bill",98);
 //        map.put("tom",12);
         boolean exits=map.containsKey("tom");
