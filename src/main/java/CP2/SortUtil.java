@@ -59,7 +59,93 @@ public class SortUtil {
             }
             System.out.println();
         }
+
+
     }
 
+    public static void merge(int[] array, int low, int mid, int high) {
+        int[] helper = new int[array.length];
+        for (int k = low; k <= high; k++) {
+            helper[k] = array[k];
+        }
+        int i = low, j = mid + 1;
+        for (int k = low; k <= high; k++) {
+        // k means current location
+            if (i > mid) {
+        // no item in left part
+                array[k] = helper[j];
+                j++;
+            } else if (j > high) {
+        // no item in right part
+                array[k] = helper[i];
+                i++;
+            } else if (helper[i] > helper[j]) {
+        // get smaller item in the right side
+                array[k] = helper[j];
+                j++;
+            } else {
+        // get smaller item in the left side
+                array[k] = helper[i];
+                i++;
+            }
+        }
+    }
+
+
+
+    public static void sort(int[] array, int low, int high) {
+        if (high <= low) return;
+        int mid = low + (high - low) / 2;
+        sort(array, low, mid);
+        sort(array, mid + 1, high);
+        merge(array, low, mid, high);
+        for (int item : array) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
+    }
+
+
+    public static void mergeSort(int[] array) {
+        sort(array, 0, array.length - 1);
+    }
+
+    public static void quickSort(int[] array){
+        if(array != null){
+            quickSort(array, 0, array.length-1);
+        }
+    }
+
+    private static void quickSort(int[] array,int beg,int end){
+        if(beg >= end || array == null)
+            return;
+        int p = partition(array, beg, end);
+        quickSort(array, beg, p-1);
+        quickSort(array, p+1, end);
+    }
+
+    private static int partition(int[] array, int beg, int end) {
+        int first = array[beg];
+        int i = beg, j = end;
+        while (i < j) {
+            while (array[i] <= first && i < end) {
+                i++;
+            }
+            while (array[j] > first && j >= beg) {
+                j--;
+            }
+            if (i < j) {
+                array[i] = array[i] ^ array[j];
+                array[j] = array[i] ^ array[j];
+                array[i] = array[i] ^ array[j];
+            }
+        }
+        if (j != beg) {
+            array[j] = array[beg] ^ array[j];
+            array[beg] = array[beg] ^ array[j];
+            array[j] = array[beg] ^ array[j];
+        }
+        return j;
+    }
 
 }
